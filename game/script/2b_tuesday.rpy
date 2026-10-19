@@ -66,9 +66,11 @@ label deadend_1_return:
 
     stop sound
 
+label notte_insonne:
+
     play music audio.myst_mistero_meandri fadein (5.0)
 
-    show black with fade (5.0)
+    show black with Dissolve(5.0)
 
     "I would have been excited to be with Elise. I really liked her."
 

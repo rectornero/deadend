@@ -4,10 +4,11 @@
 
 ### INIZIALIZZAZIONE DATI: CASO 1 ###
 
-define vote_1 = ""
+default vote_1 = ""
 
-define plan_overall_score = 0
-define plan_phase_1_score = 0
+default plan_overall_score = 0
+default plan_phase_1_score = 0
+default plan_phase_2_score = 0
 
 ##### INIZIALIZZAZIONE DATI: PERSONAGGI #####
 
@@ -21,11 +22,11 @@ define ts = "#42a4f4"
 
 # NARRATORE #
 define narrator = Character(what_italic=True, what_color = "#d6d6d6")
-define smartphone = Character("Smartphone", who_color = "#2f4260", what_color = "2ecc71")
+define smartphone = Character("Smartphone", who_color = "#2f4260", what_color = "#2ecc71")
 # PERSONAGGIO #
-define nome_protagonista = ""
+default nome_protagonista = ""
 define m = DynamicCharacter("nome_protagonista", who_color="#8e8e8e")
-define gender = ""
+default gender = ""
 
 ### INIZIALIZZAZIONE DATI: BIANCA ###
 
@@ -46,7 +47,6 @@ image bianca bleh_1 = LiveCrop((0, 0, 447, 1000), "bianca bleh1")
 image bianca default_1 = LiveCrop((0, 0, 447, 1000), "bianca default1")
 image bianca default_2 = LiveCrop((0, 0, 447, 1000), "bianca default2")
 image bianca disbelief_1 = LiveCrop((0, 0, 447, 1000), "bianca disbelief1")
-image bianca disbelief_2 = LiveCrop((0, 0, 447, 1000), "bianca disbelief2")
 image bianca embarassed_1 = LiveCrop((0, 0, 447, 1000), "bianca embarassed1")
 image bianca embarassed_2 = LiveCrop((0, 0, 447, 1000), "bianca embarassed2")
 image bianca embarassed_3 = LiveCrop((0, 0, 447, 1000), "bianca embarassed3")
@@ -142,7 +142,6 @@ image elise embarassed_1 = LiveCrop((0, 0, 562, 960), "elise embarassed1")
 image elise embarassed_2 = LiveCrop((0, 0, 562, 960), "elise embarassed2")
 image elise huh_1 = LiveCrop((0, 0, 562, 960), "elise huh1")
 image elise huh_2 = LiveCrop((0, 0, 562, 960), "elise huh2")
-image elise lookaway_1 = LiveCrop((0, 0, 562, 960), "elise lookaway1")
 image elise pout_1 = LiveCrop((0, 0, 562, 960), "elise pout1")
 image elise pout_2 = LiveCrop((0, 0, 562, 960), "elise pout2")
 image elise pout_3 = LiveCrop((0, 0, 562, 960), "elise pout3")
@@ -205,7 +204,6 @@ image elise casual embarassed_1 = LiveCrop((0, 0, 568, 960), "elise casual embar
 image elise casual embarassed_2 = LiveCrop((0, 0, 568, 960), "elise casual embarassed2")
 image elise casual huh_1 = LiveCrop((0, 0, 568, 960), "elise casual huh1")
 image elise casual huh_2 = LiveCrop((0, 0, 568, 960), "elise casual huh2")
-image elise casual lookaway_1 = LiveCrop((0, 0, 568, 960), "elise casual lookaway1")
 image elise casual pout_1 = LiveCrop((0, 0, 568, 960), "elise casual pout1")
 image elise casual pout_2 = LiveCrop((0, 0, 568, 960), "elise casual pout2")
 image elise casual pout_3 = LiveCrop((0, 0, 568, 960), "elise casual pout3")
@@ -332,7 +330,6 @@ image norman wink_1 = LiveCrop((0, 0, 858, 1000), "norman wink1")
 image norman deadend angry_1 = LiveCrop((0, 0, 858, 1000), "norman deadend angry1")
 image norman deadend default_1 = LiveCrop((0, 0, 858, 1000), "norman deadend default1")
 image norman deadend awkward_1 = LiveCrop((0, 0, 858, 1000), "norman deadend awkward1")
-image norman deadend default_1 = LiveCrop((0, 0, 858, 1000), "norman deadend default1")
 image norman deadend dread_1 = LiveCrop((0, 0, 858, 1000), "norman deadend dread1")
 image norman deadend evil_1 = LiveCrop((0, 0, 858, 1000), "norman deadend evil1")
 image norman deadend pout_1 = LiveCrop((0, 0, 858, 1000), "norman deadend pout1")
@@ -340,6 +337,7 @@ image norman deadend smile_1 = LiveCrop((0, 0, 858, 1000), "norman deadend smile
 image norman deadend smile_3 = LiveCrop((0, 0, 858, 1000), "norman deadend smile3")
 image norman deadend smirk_1 = LiveCrop((0, 0, 858, 1000), "norman deadend smirk1")
 image norman deadend surprised_1 = LiveCrop((0, 0, 858, 1000), "norman deadend surprised1")
+image norman deadend wink_1 = LiveCrop((0, 0, 858, 1000), "norman deadend wink1")
 
 ### INIZIALIZZAZIONE DATI: PERCY ###
 
@@ -515,25 +513,7 @@ define nome_scuola = "Soul Street Academy"
 
 ### DEADEND ###
 
-define deadend_counter = 0
-
-screen dodge_up():
-        textbutton "{color=#ffffff}{b}DODGE{/b}{/color}" xpos 0.5 ypos 1 background "#ff0000" action Jump("dodged_up")
-
-screen dodge_sx():
-        textbutton "{color=#ffffff}{b}DODGE{/b}{/color}" xpos 10 ypos 0.5 background "#ff0000" action Jump("dodged_sx")
-
-### DREAD RUN ###
-
-screen dread_run():
-        textbutton "{color=#ffffff}{b}RUN{/b}{/color}" xpos 0.5 ypos 0.5 background "#0000ff" action Jump("dread_run")
-
-### NORMAN ENCOUNTER ###
-define elise_coming = False
-
-
-define dread_run_counter = 0
-define slow_down_run = 0
+## Timed events (quiz countdown, dodge, dread run) and the contract live in systems.rpy.
 
 image tintred:
   Solid("#830303")
@@ -556,46 +536,7 @@ screen inserisci_nome():
                 null height 20
                 text "{i}My name is...{/i}"
                 null height 20
-                input default ""
-
-### TIMER ###
-
-define timer_range = 0
-define timer_jump = 0
-
-transform alpha_dissolve:
-    alpha 0.0
-    linear 0.5 alpha 1.0
-    on hide:
-        linear 0.5 alpha 0
-    # This is to fade the bar in and out, and is only required once in your script
-
-screen countdown:
-    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump(timer_jump)])
-    bar value time range timer_range xalign 0.5 yalign 0.2 xmaximum 300 left_bar "#54000090"  right_bar "#d6d6d690" at alpha_dissolve # This is the timer bar.
-
-screen hidden_countdown:
-    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('hidden_countdown'), Jump(timer_jump)])
-
-screen numeric_countdown:
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Jump(timer_jump)])
-    if time <= 2:
-        text str(time) xpos .1 ypos .1 color "#FF0000" size 100
-    else:
-        text str(time) xpos .1 ypos .1 size 100 at alpha_dissolve
-
-### DA INSERIRE NEL CODICE: #######
-#
-### PREPARAZIONE
-# $ time = 5 # the time the timer takes to count down to 0.
-# $ timer_range = 5 # a number matching time (bar only)
-# $ timer_jump = 'menu1_slow' # the label to jump to when time runs out
-### AVVIO
-# show screen countdown
-#
-### INTERRUZIONE O CHIUSURA
-# hide screen countdown
-###################################
+                input default "" length 20
 
 ############################## ANIMAZIONI ##############################
 

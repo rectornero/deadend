@@ -33,7 +33,7 @@ label tuesday:
     "I did my best to keep my voice loud and clear, and to remark the word \"memories\"."
     e surprised_1 "Oh well, that's nothing. Why do you come up with..."
     "I swiftly winked to Edward."
-    "Oh, well, s-sure! I mean, that's nothing! We absolutely... need to help you finding about your LOST MEMORIES."
+    e "Oh, well, s-sure! I mean, that's nothing! We absolutely... need to help you finding about your LOST MEMORIES."
     "Not so loud, Edward! She'll understand that there is something fishy, this way!"
     m "A-and, well, thinking about the fact that it seems to be not the only case makes me feel uncomfortable..."
     e "Yes, I've heard rumors about a girl losing her memory too. Do you know who she is?"
@@ -271,9 +271,9 @@ label tuesday:
     n evil_1 "No worries. Oh well, I mean. Worry a{fast} little bit"
     n smile_3 "No worries. Oh well. I mean. Worry a little bit{fast}."
     m "Eh?"
-    n smile_4 "I mean, take care!"
+    n smile_3 "I mean, take care!"
     m "You've already said that! What's got into you tonight?"
-    n smile_4 "Nothing, really! See you!"
+    n smile_3 "Nothing, really! See you!"
     play sound audio.umani_passi
     pause 0.5
     stop sound
@@ -313,36 +313,34 @@ label tuesday:
     "What the fuck is happening here? Really, now!"
 
     "Okay, let's sum up things. Elise has come here, as she thinks she's heard footsteps following her."
-    $ time = 0.5
-    $ timer_range = 0.5
-    $ timer_jump = "dodge_up_timeout"
-
-    show screen hidden_countdown
-
-    show screen dodge_up
-    pause
-
-    label dodge_up_timeout:
-        hide screen dodge_up
+    "Norman gave her my address, and then he was nowhere to be found. Gain warned us about a culprit, and..."
+    stop music
+    "..."
+    "The floor creaked. Behind me."
+    play music audio.umani_battito_veloce
+    if not persistent.seen_qte_tutorial:
+        t "Danger! When the screen flashes red, press the arrow shown (arrow keys, WASD, or click the pad) before the bar runs out."
+        t "Every dodge is faster than the last. You can make timers more forgiving from Preferences."
+        $ persistent.seen_qte_tutorial = True
+    call qte_sequence(rounds=4)
+    if not _return:
         jump deadend_1
 
-
-    label dodged_up:
-        hide screen hidden_countdown
-        hide screen dodge_up
-
-        $ time = 0.5
-        $ timer_range = 0.5
-        $ timer_jump = "dodge_sx_timeout"
-        show screen hidden_countdown
-
-        show screen dodge_sx
-        pause
-
-    label dodge_sx_timeout:
-        hide screen dodge_sx
-        jump deadend_1
-
-    label dodged_sx:
-        hide screen hidden_countdown
-        "You win"
+label tuesday_dodged:
+    stop music fadeout 1.0
+    show cucina notte with vpunch
+    "A blade bit into the table, right where my head had been a second before."
+    "A shadow. Hooded, faceless. It wrenched the knife free..."
+    "...and ran. The door slammed against the wall, and the footsteps vanished into the night."
+    m "{cps=20}W-what... what the hell was that...{/cps}"
+    play sound audio.porta_chiusura
+    show elise scared_2 with dissolve
+    l "[nome_protagonista]! I heard a noise, what... what happened?!"
+    m "Someone was here. Someone... tried to kill me."
+    l scared_1 "W-WHAT?!"
+    "I ran to the door, locked it twice, and pushed a chair against the handle."
+    m "They're gone. For now. Elise... it wasn't your imagination. Someone really was following you."
+    l scared_2 "I'm sorry... it's my fault... I led them here..."
+    m "No. Whoever it was, they were after me too. Just... stay close to me, this night."
+    l shock_2 "O-oh... well, y-yes... I will..."
+    jump notte_insonne

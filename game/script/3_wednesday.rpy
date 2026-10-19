@@ -11,7 +11,7 @@ label wednesday:
     l "Thank you very much for letting me stay..."
     m "Oh, it is nothing, really. I could say the same, as you helped me sleeping good and more than I should."
     l "What's the time, by the way?"
-    m "It's about  11:30 PM."
+    m "It's about 11:30 AM."
     l sweat_7 "W-WHAT?! We're super late for school!!"
     m "Yes, I know. You were sleeping so well, and, well, after what happened yesterday, I just couldn't make it awakening you."
     l pout_4 "Well, I can see your reasons, but..."
@@ -364,139 +364,10 @@ label wednesday:
 
     "Fuck all of this... I must... I must run away."
 
-    show screen dread_run
+    hide norman with dissolve
+    call dread_run_sequence
 
-    pause
-
-    label dread_run:
-        $dread_run_counter = dread_run_counter + 1
-        play sound audio.umani_passi
-        hide screen dread_run
-        pause (0.3)
-        show screen dread_run
-        stop sound
-        if dread_run_counter == 10:
-            hide screen dread_run
-            show norman deadend angry_1 with dissolve
-            n "You can't run from me!"
-            hide norman deadend angry_1
-            show screen dread_run
-        elif dread_run_counter == 20:
-            hide screen dread_run
-            show norman deadend smile_3 with dissolve
-            n "It's really useless!"
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 30:
-            hide screen dread_run
-            show norman deadend awkward_1 with dissolve
-            n "You are not going anywhere, you know?"
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 40:
-            hide screen dread_run
-            show norman deadend evil_1 with dissolve
-            n "There is nothing here. Nowhere to run."
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 50:
-            hide screen dread_run
-            show norman deadend smirk_1 with dissolve
-            n "At least I set you free, of course."
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 60:
-            hide screen dread_run
-            show norman deadend default_1 with dissolve
-            n "So please, just slow down. Let's walk together and talk."
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 70:
-            hide screen dread_run
-            show norman deadend dread_1 with dissolve
-            n "I asked you to SLOW DOWN."
-            show black with hpunch
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 71:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "Now, now, how kind of you."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 72:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "You do really like Elise, right?"
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 73:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "And you don't wanna lose her."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 74:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "Let's make a deal."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 75:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "You live with her happily forever after."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 76:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "Just, before that, you have to win my game."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 77:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "There is something you want to discover."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 78:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "Do you wanna know what is it?"
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 79:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "Well, I'll tell you."
-            hide norman deadend smile_1
-            show screen dread_run
-        elif dread_run_counter == 80:
-            hide screen dread_run
-            show norman deadend smile_1 with dissolve
-            n "You know..."
-            n "Someone..."
-            n deadend default_1 "KILLED both you and Bianca."
-            n deadend smile_3 "...oh, and it happened two times!"
-            n deadend default_1 "The important thing is, he or she will try again."
-            n deadend smile_1 "Would like to be ready and save pretty lil' flower, when the time comes?"
-            n deadend default_1 "Well then, play my game. Find out who the culprit is."
-            n deadend smile_3 "Come to Café Memoria at midnight if you want some hints!"
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 81:
-            hide screen dread_run
-            show norman deadend smile_3 with dissolve
-            n "Go now, run!"
-            n "Run back to your world!"
-            n "Run back to your loved one!"
-            hide norman deadend smile_3
-            show screen dread_run
-        elif dread_run_counter == 90:
-            hide screen dread_run
-        pause
-
+    label dread_run_end:
         stop music fadeout(10.0)
         scene ccomm terrazza giorno with Fade(5.0,0.0,5.0)
         show elise casual tears_2
@@ -549,7 +420,7 @@ label wednesday:
         "Lily looked really worried for me. I was fine, though."
         "There was still something off that made me feel uncomfortable, though."
         "Couldn't say what."
-        "While on track, I messaged Bianca that I would have arrived at 17.20 PM."
+        "While on track, I messaged Bianca that I would have arrived at 17:20."
         stop music fadeout 1.0
         "We arrived at Café Memoria on time."
 
@@ -578,7 +449,7 @@ label wednesday:
         l casual relieved_2 "Bye, everyone."
         hide elise with dissolve
         show bianca at cleft with dissolve
-        b "Sorry for this inconvenience, Daniele. Come in with us. We have urge to talk."
+        b "Sorry for this inconvenience, [nome_protagonista]. Come in with us. We have urge to talk."
         m "Urge? What happened?"
         b "Norman brought us some crucial news."
         m "Crucial... news?"
@@ -614,7 +485,7 @@ label wednesday:
 
         n smile_1 "Oh, hello dud. How's goin'?"
         m "It's... alright I guess?"
-        b default_1 "Norman, tell me... have you suggested Elise to go... to Daniele's place, yesterday evening?"
+        b default_1 "Norman, tell me... have you suggested Elise to go... to [nome_protagonista]'s place, yesterday evening?"
         n surprised_1 "Uh? To Lily, you mean?"
         b default_1 "Yes."
         n "It'd been funny, indeed, but... well, I didn't."
@@ -689,7 +560,7 @@ label wednesday:
         e "...we need to give him something in return."
         b "We're not going to hurt anyone. It's just for the truth."
         m "It seems so heartless, though."
-        b "Well, Daniele, we can actually solve this in another way."
+        b "Well, [nome_protagonista], we can actually solve this in another way."
         m "Which is?"
         b "You can convince Elise to make Gain spill it."
         m "And how, exactly?"
@@ -752,11 +623,8 @@ label wednesday:
         # Time: 3
         ##################
 
-            $ time = 3
-            $ timer_range = 3
-            $ timer_jump = "is2_q1_timeout"
             n "For starters: who are we planning to corner?"
-            show screen countdown
+            show screen countdown(3, "is2_q1_timeout")
             menu:
                 n "For starters: who are we planning to corner?{fast}"
                 "Elise":
@@ -768,7 +636,7 @@ label wednesday:
                     n surprised_1 "But you get the joke! HA! Can't deny it."
                     b angry_1 "Stop, or I'm going to KILL you."
                     n "Hey, calm down, relax! You may actually do that, haha!"
-                    e sad_1 "[nome_protagonista] Cornering a girl is not polite..."
+                    e sad_1 "[nome_protagonista], cornering a girl is not polite..."
                     "Are they all crazy?!"
                     b default_1 "By the way, we're trying to corner Gain through \"borrowing\" Elise."
                     jump is2_q2
@@ -776,12 +644,12 @@ label wednesday:
                     hide screen countdown
                     play sound audio.quiz_esatto
                     n smile_3 "Dling dling! Got it!"
+                    $ plan_phase_2_score += 1
                     jump is2_q2
                 "We still don't know":
                     hide screen countdown
                     play sound audio.quiz_errato
                     b default_1 "That's wrong. Sadly enough, we do. We're investigating on Gain."
-                    $ plan_phase_1_score += 1
                     jump is2_q2
         label is2_q1_timeout:
             b default_1 "We are looking for Gain. There is high chance that he's the culprit. Or that he knows the truth."
@@ -791,11 +659,8 @@ label wednesday:
         # Options: 3
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is2_q2_timeout"
             n "Second one. Why are we investigating on Gain?"
-            show screen countdown
+            show screen countdown(5, "is2_q2_timeout")
             menu:
                 n "Second one. Why are we investigating on Gain?{fast}"
                 "He deserves this: he has taken Elise from me!":
@@ -803,7 +668,7 @@ label wednesday:
                     play sound audio.quiz_errato
                     n angry_1 "Yeah, tell him!"
                     b lookaway_1 "Of... course, this is not the reason."
-                    e mock_1 "I know that my brother's story may hurt, [nome_protagonista], but you shouldn't focus on this so much."
+                    e mock_1 "I know that the engagement story may hurt, [nome_protagonista], but you shouldn't focus on this so much."
                     b default_1 "Norman was following Gain, and he discovered he was carrying a gun. That's why we're investigating on him."
                     jump is2_q3
                 "He was following Norman with his car":
@@ -816,28 +681,27 @@ label wednesday:
                     hide screen countdown
                     play sound audio.quiz_esatto
                     n smile_1 "That's right! We're gonna make him spill the truth!"
+                    $ plan_phase_2_score += 1
                     b default_1 "I hope we'll manage to do it smoothly."
                     jump is2_q3
 
         label is2_q2_timeout:
-            b default_1 "We are looking for Gain. There is high chance that he's the culprit. Or that he knows the truth."
+            b default_1 "Norman saw him walking alone at night, with a gun. That's why we're investigating on him."
 
         label is2_q3:
         ### QUESTION 3 ###
         # Options: 3
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is2_q3_timeout"
             n "Third question! Where and when are we going to get into action?"
-            show screen countdown
+            show screen countdown(5, "is2_q3_timeout")
             menu:
-                n "Third question! Where are we going to get into action?{fast}"
+                n "Third question! Where and when are we going to get into action?{fast}"
                 "Tomorrow, at school camp":
                     hide screen countdown
                     play sound audio.quiz_esatto
                     n angry_1 "Yeah! There's no vacation for our team!"
+                    $ plan_phase_2_score += 1
                     jump is2_q4
                 "Tomorrow, at school":
                     hide screen countdown
@@ -860,7 +724,7 @@ label wednesday:
                     jump is2_q4
 
         label is2_q3_timeout:
-            b default_1 "We are getting things done domorrow, at the school camp."
+            b default_1 "We are getting things done tomorrow, at the school camp."
 
 
         label is2_q4:
@@ -869,11 +733,8 @@ label wednesday:
         # Options: 3
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is2_q4_timeout"
             n "Let's say we're at the camp. What do we need to do first?"
-            show screen countdown
+            show screen countdown(5, "is2_q4_timeout")
             menu:
                 n "Let's say we're at the camp. What do we need to do first?{fast}"
                 "We try capturing Gain":
@@ -888,9 +749,10 @@ label wednesday:
                     hide screen countdown
                     play sound audio.quiz_esatto
                     n smile_1 "That's about right!"
+                    $ plan_phase_2_score += 1
                     e sad_1 "It won't be easy, though."
                     b default_1 "It won't, but we need to try."
-                    b unimpressed_1 "After all, it seems that Daniele has a... \"good connection\" wih her."
+                    b unimpressed_1 "After all, it seems that [nome_protagonista] has a... \"good connection\" wih her."
                     "What's her problem? I just don't wanna think about this until I can get it touch with her and understand the \"Gain\" thing."
                     n wink_1 "Yeah, \"connection\", of course...! Haha! Well played, bro'."
                     "Oh please, Newz, don't make this worse than it is!"
@@ -914,11 +776,8 @@ label wednesday:
         # Options: 3
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is2_q5_timeout"
             n "Last one! What do we do if Elise doesn't want to help us?"
-            show screen countdown
+            show screen countdown(5, "is2_q5_timeout")
             menu:
                 n "Last one! What do we do if Elise doesn't want to help us?{fast}"
                 "We meet again to think about a new plan.":
@@ -943,6 +802,7 @@ label wednesday:
                     hide screen countdown
                     play sound audio.quiz_esatto
                     b default_2 "Yes, that's the plan."
+                    $ plan_phase_2_score += 1
                     n smirk_1 "[nome_protagonista], don't show such a worried face. We know you can \"force\" things being sweet."
                     m "I don't know, Newz, I just don't like this. We never did something like that, before."
                     b talk_1 "The end justifies the means. We have to. We just cannot let truth slip away."
@@ -955,20 +815,27 @@ label wednesday:
 
         label is2_q5_timeout:
             b default_1 "We are going to make him confess the truth by leveraging our influence over Elise."
-            n grin_1 "She means we're gonna make him talk by making him worry about her."
+            n smirk_1 "She means we're gonna make him talk by making him worry about her."
             b default_2 "Yes. Likely."
-            n grin_1 "[nome_protagonista], don't show such a worried face. We know you can \"force\" things being sweet."
+            n smirk_1 "[nome_protagonista], don't show such a worried face. We know you can \"force\" things being sweet."
             m "I don't know, Newz, I just don't like this. We never did something like that, before."
             b talk_1 "The end justifies the means. We have to. We just cannot let truth slip away."
             n default_1 "Don't make this that serious, Bianca. He just has a gun. This doesn't mean he's gonna shoot at everyone of us."
-            e shock_1 "He was following [nome_protagonista], though!"
+            e shocked_1 "He was following [nome_protagonista], though!"
             n smile_3 "Maybe he just wants to shoot at him!"
             m "You're not funny, Newz..."
             n default_1 "Just don't get wet before it rains."
 
         label is2_q_end:
             stop music fadeout 1.0
+            show screen quiz_results(plan_phase_2_score, 5)
             n smile_3 "Very nice! We're done!"
+            if plan_phase_2_score == 5:
+                n smirk_1 "Perfect score. Here's a freebie, then: a name is a leash."
+                n default_1 "Whoever knows the true one... holds the other end."
+                e surprised_1 "What's that supposed to mean?"
+                n smile_3 "Nothing! Just something my grandma used to say."
+            hide screen quiz_results
             b default_1 "Very good. Now, I'm going to explain the detailed plan."
 
         centered "{color=#000000}{size=80}{b}{cps=10}PHASE 3: PLAN DEFINITION{/cps}{/b}{/size}{/color}"
@@ -1010,7 +877,7 @@ label wednesday:
         m "Uh? Wait. When have I registered her number?"
         l "Hello...?"
         m "..."
-        l "Hey...? Is it you, Daniele?"
+        l "Hey...? Is it you, [nome_protagonista]?"
         "So, it's the same for her. She can see my name, as she's saved my number before."
         m "Hi, Lily. I was wondering... do you remember when we registered our numbers before?"
         l "Uhm, oh...! No, I can't recall that...!"
@@ -1129,6 +996,8 @@ label wednesday:
         m "Yeah, it's a bad one really. What is he doing hidden there?"
         l "I... I don't know... can you recognise the place?"
         m "Hmm... I don't know... it seems a back alley of some sort."
+        "There was some writing sprayed on the wall behind him. Most of it was cut off by the frame."
+        "Only three letters were readable, as if somebody wanted them to be seen: {b}D A N{/b}..."
         "Hey wait. A back alley?"
         m "Elise... there's something strange in this photo. We can see Norman, but also the two of us."
         m "It's a strange place for someone to take a photo of us both. Don't you think?"
@@ -1159,7 +1028,7 @@ label wednesday:
                 $ elise_coming = True;
             "Go alone":
                 m "I'm going alone. It's dangerous. Please, believe me! Wait here!"
-                l casual scared_2 "Oh my God, no, Daniele...!!"
+                l casual scared_2 "Oh my God, no, [nome_protagonista]...!!"
 
         scene cafe strada notte with fade
         play music audio.myst_tensione

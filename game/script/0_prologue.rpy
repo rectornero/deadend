@@ -22,11 +22,11 @@ label prologue:
 
         call screen inserisci_nome()
 
-        if _return == "":
-            p "I must struggle to remember at least that."
+        if _return.strip() == "":
+            "I must struggle to remember at least that."
             jump scelta_nome
-    
-    $ nome_protagonista = _return
+
+    $ nome_protagonista = _return.strip()
 
     "Okay, my name is [nome_protagonista], for sure."
 
@@ -65,14 +65,14 @@ label prologue:
     b sad_1 "I was worried, as we all couldn't understand what was going on..."
     m "What do you mean?"
     b default_1 "They said that you have been found unconscious near M. That you were not wounded by any means. That's it."
-    "She's talking about \"Cafè Memoria\", for sure. We cut its name short as \"M\"."
+    "She's talking about \"Café Memoria\", for sure. We cut its name short as \"M\"."
     m "Hm. I actually feel fine, now. How strange."
     b "I've seen Edward coming here for you, too. I'm sure he's on his way here, as I informed him when medics told me that you were fine."
     b default_2 "Do you remember anything about what happened?"
     m "..."
     "I tried to get anything from my recent memory, but nothing came out."
     m "Absolutely nothing. I'm sorry. Do you know anything else that can help me remembering? Like, was anybody with me?"
-    b default_1 "It seems you went there alone, around 23:30 PM. I called everyone, but nobody knew anything."
+    b default_1 "It seems you went there alone, around 23:30. I called everyone, but nobody knew anything."
     m "I see. Well, I think it can't be helped, then. I hope it will come out with time."
 
     play sound audio.umani_passi fadein 2.0
@@ -112,7 +112,7 @@ label prologue:
     m "Thanks, Ed. See you on Monday, then."
     show bianca at front
     show edward at rear
-    b default_1 "16:00 P.M.! Get ready on time."
+    b default_1 "16:00 sharp! Get ready on time."
     m "Yeah, yeah, no problem!"
     "She always thinks somebody's gonna be late... well, as she's talking about me and Ed, she's probably right."
 

@@ -1,7 +1,5 @@
 label deadend_1:
 
-    define body = "head"
-
     play music audio.umani_battito
     show cucina notte
     show tintred
@@ -30,13 +28,14 @@ label deadend_1:
     "My head is spinning... I... just... can't... keep my eyes... open..."
     "Cold is spreading everywhere in my body. Is... is it all over...?"
     show black with Fade(3,0,3)
-    $deadend_counter = 1
+    $ deadend_counter += 1
     show norman deadend surprised_1
     play music audio.myst_inquietudine
     n "So... you ended up being killed, after all..."
     n deadend awkward_1 "I'm sorry! You cannot complain, though, I advised you!"
     n deadend smile_3 "Don't worry though! You can still fix that!"
     n deadend default_1 "After all, avoiding this dead end was quite difficult, as it came out of nothing and everything."
+    n deadend smirk_1 "Oh, and don't bother looking for me tomorrow. A duke never wears the same face twice."
     stop music fadeout 1.0
     n deadend default_1 "Just remember that you may won't be enough lucky to go back fixing things... the next time."
     n deadend wink_1 "Good luck!"
@@ -66,18 +65,12 @@ label deadend_2:
     scene black with Fade(10.0,0.0,0.0)
     show norman deadend surprised_1
     play music audio.myst_inquietudine
-    if(deadend_counter == 1):
+    if deadend_counter >= 1:
         n "You're here again, I see..."
-        n default_1 "My bad. You have only one occasion left. If you fail again..."
-        n smile_3 "...I won't be able to bring you back!"
-        stop music fadeout 1.0
-        n deadend frown_1 "I hope you've understood who is the culprit, by now..."
-        n deadend smile_1 "Good luck! Do your best!"
+        n deadend pout_1 "That makes two. No more rewinds for you, I'm afraid."
     else:
-        n "So... you ended up being killed.."
-        n deadend awkward_1 "I'm sorry! It's not your fault, after all."
-        n deadend pout_1 "There is no way to avoid this ending, no matter what you do throughout the game."
-        n "The only way to change this sad conclusion..."
-        n "...is to get the game's source code."
-        n deadend default_1 "Join {i}RectorNetwork{/i} from https://rectorstudio.games and ask for it, if you want to change your fate!"
-        n "Since then... farewell!"
+        n "So... you ended up being killed, after all..."
+        n deadend awkward_1 "Don't look at me like that! I warned you."
+        n deadend pout_1 "And honestly, I'm getting bored of rewinding."
+    n deadend smirk_1 "So let's end this game properly. One last move each."
+    jump contract

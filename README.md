@@ -1,6 +1,6 @@
 # DeadenD
 
-A visual novel made with [Ren'Py](https://www.renpy.org/). Alpha version 0.1, originally developed in 2018 with Ren'Py 6.99.13.
+A visual novel made with [Ren'Py](https://www.renpy.org/). Alpha version 0.1, originally developed in 2018 with Ren'Py 6.99.13; it now runs on Ren'Py 8.5.
 
 ## Running the game
 
@@ -13,7 +13,8 @@ A visual novel made with [Ren'Py](https://www.renpy.org/). Alpha version 0.1, or
 ```
 game/
   script.rpy        characters, images and audio definitions
-  script/           story chapters (prologue, Monday to Thursday, n_deadend)
+  script/           story chapters (prologue, Monday to Thursday, dead ends, the contract finale)
+  systems.rpy       timed events: quiz countdown, dodge minigame, escape sequence
   screens.rpy       UI screens, including the credits
   gui.rpy, gui/     GUI configuration and graphics
   options.rpy       project options and build settings

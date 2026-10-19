@@ -85,7 +85,7 @@ label thursday:
 
     n "Let's eat!"
     m "Oh well... yeah, let's do it! It will be a long day."
-    l deadend casual shock_2 "Hey! What's happening here...? Why am I standing?"
+    l deadend casual shock_1 "Hey! What's happening here...? Why am I standing?"
     "Today is the day of the plan. Newz is picking me up, and we're going to school together. This is so unlikely!"
     n "A good cappuccino here! The flavor's particular."
     m "It's soya milk."
@@ -165,7 +165,7 @@ label thursday:
     m "The wrong choice would be to follow a creep like you!"
     g angry_1 "Why are you always around Elise? Just get away from her!"
     m "HOW DARE YOU! We're a couple!"
-    e shock_1 "... What?"
+    l shock_1 "... What?"
     m "What am I saying?"
     show villaggio giorno with hpunch
     "What's up? My head is swirling again."

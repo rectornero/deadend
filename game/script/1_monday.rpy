@@ -40,7 +40,7 @@ label monday:
     label lunedi:
         scene sottopassaggio giorno with fade
         play music audio.mezzi_macchina_interno_ovattato
-        m "So, how far are we from Cafè Memoria, exactly?"
+        m "So, how far are we from Café Memoria, exactly?"
         e "It's about 20 minutes. We'll make it, don't worry! I was joking about arriving late, before."
         m "Nice!"
 
@@ -378,11 +378,8 @@ label monday:
         # Time: 3
         ##################
 
-            $ time = 3
-            $ timer_range = 3
-            $ timer_jump = "is_q1_timeout"
             n "So, let's warm up a bit! What is the name of the girl?"
-            show screen countdown
+            show screen countdown(3, "is_q1_timeout")
             menu:
                 n "What's is the name of the person we're lookin' for?{fast}"
                 "Phony":
@@ -390,7 +387,7 @@ label monday:
                     play sound audio.quiz_errato
                     n surprised_1 "How can a girl be called \"Phony\"? It's rude!"
                     b lookaway_1 "I'd expect anything from you, guys. Especially from you, Newz."
-                    n impressed_1 "I'd never do that!"
+                    n awkward_1 "I'd never do that!"
                     b default_1 "By the way, he never told us her name. We may ask for her name when we meet her, though."
                     n angry_1 "No, you should call her \"Lily\", as I already told you before!"
                     b unimpressed_1 "Yeah, yeah, whatever."
@@ -413,22 +410,19 @@ label monday:
                     jump is_q2
 
         label is_q1_timeout:
-            b default_1 "The name's Elise."
-            n "That's correct. [nome_protagonista] follow our intel's example, and answer quick!"
+            b default_1 "He never told us her name. We'll ask her when we meet her."
+            n "That's correct. [nome_protagonista], follow our intel's example, and answer quick!"
 
         label is_q2:
         ### QUESTION 2 ###
         # Options: 3
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is_q2_timeout"
             n "Okay now. What is your final objective?"
-            show screen countdown
+            show screen countdown(5, "is_q2_timeout")
             menu:
                 n "Okay now. What is our final objective?{fast}"
-                "Talk with Elise and find out what has happened to her":
+                "Talk with Lily and find out what has happened to her":
                     hide screen countdown
                     play sound audio.quiz_errato
                     n smile_1 "Sorry, that's wrong!"
@@ -436,7 +430,7 @@ label monday:
                     b "Yes, it's partially wrong. The only one that may know what happened to Lily is Phony."
                     b "We must grasp the truth using the information he has."
                     jump is_q3
-                "Talk with Phony and find out what has happened to Elise":
+                "Talk with Phony and find out what has happened to Lily":
                     hide screen countdown
                     play sound audio.quiz_esatto
                     n "You're smart. Nice job."
@@ -446,22 +440,19 @@ label monday:
                     hide screen countdown
                     play sound audio.quiz_errato
                     n smile_3 "Hahaha, nice one."
-                    b lookaway_1 "We must get acquainted with Phony, and find out what has happened to Elise."
-                    n smile_1 "Yeah, that's right, but the [nome_protagonista] is funnier. I love him."
+                    b lookaway_1 "We must get acquainted with Phony, and find out what has happened to Lily."
+                    n smile_1 "Yeah, that's right, but [nome_protagonista] is funnier. I love him."
                     jump is_q3
         label is_q2_timeout:
-            b default_1 "We must get acquainted with Phony, and find out what has happened to Elise."
+            b default_1 "We must get acquainted with Phony, and find out what has happened to Lily."
             e "Oh, right. That was tough."
         label is_q3:
         ### QUESTION 3 ###
         # Options: 3
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is_q3_timerout"
             n "How are you gonna make Phony spill what we want to know?"
-            show screen countdown
+            show screen countdown(5, "is_q3_timeout")
             menu:
                 n "How are you gonna make Phony spill what we want to know?{fast}"
                 "We break into his house and threaten him":
@@ -482,7 +473,7 @@ label monday:
                     play sound audio.quiz_errato
                     n default_1 "If this was this easy, we wouldn't plan."
                     e "I think Phony is not telling us something that important, if we cannot find a workaround of sort."
-                    b default_1 "We should make Elise introduce him to us. It may be hard, though."
+                    b default_1 "We should make Lily introduce him to us. It may be hard, though."
                     n smile_1 "That's right. This is the reason we're plannin'!"
                     e smile_1 "Nothin' is hard for us. Just... complex. Right, Newz?"
                     n smile_2 "To'lly right."
@@ -498,7 +489,7 @@ label monday:
                     $ plan_phase_1_score += 1
                     jump is_q4
         label is_q3_timeout:
-            b default_1 "We should make Elise introduce him to us. It may be hard, though."
+            b default_1 "We should make Lily introduce him to us. It may be hard, though."
             n smile_1 "That's right. This is the reason we're plannin'!"
             e smile_1 "Nothin' is hard for us. Just... complex. Right, Newz?"
             n smile_2 "To'lly right."
@@ -507,11 +498,8 @@ label monday:
         # Options: 4
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is_q4_timeout"
             n "What data do we have on Lily?"
-            show screen countdown
+            show screen countdown(5, "is_q4_timeout")
             menu:
                 n "What data do we have on Lily?{fast}"
                 "Name, school, phone number, home address":
@@ -539,13 +527,13 @@ label monday:
                     e surprised_1 "And you think she would have answered to that, too?"
                     b lookaway_1 "You guys should be serious during information recap, you know?"
                     b default_1 "We have her name, school, class and phone number."
-                    n smirk "Well, actually, I have her phone number, not you."
+                    n smirk_1 "Well, actually, I have her phone number, not you."
                     e disagree_1 "Newz, you shouldn't keep all the girl for you, y'know...?"
-                    b unimpressed "... Just stop."
+                    b unimpressed_1 "... Just stop."
                     jump is_q5
         label is_q4_timeout:
             b default_1 "We have her name, school, class and phone number."
-            n smirk "Well, actually, I have her phone number, not you."
+            n smirk_1 "Well, actually, I have her phone number, not you."
             e disagree_1 "Newz, you shouldn't keep all the girl for you, y'know...?"
             b lookaway_1 "You guys should be serious during information recap, you know?"
         label is_q5:
@@ -553,13 +541,10 @@ label monday:
         # Options: 4
         # Time: 5
         ##################
-            $ time = 5
-            $ timer_range = 5
-            $ timer_jump = "is_q5_timeout"
-            n "Final one! Where did Lily said she lost her memory?"
-            show screen countdown
+            n "Final one! Where did Lily say she lost her memory?"
+            show screen countdown(5, "is_q5_timeout")
             menu:
-                n "{fast}"
+                n "Final one! Where did Lily say she lost her memory?{fast}"
                 "Near M":
                     hide screen countdown
                     play sound audio.quiz_esatto
@@ -579,19 +564,28 @@ label monday:
                     jump is_q_end
         label is_q5_timeout:
             b default_1 "If I remind correctly, you said this happened in the alley behind M."
-            n smile "You always remind things correctly, Bianca."
+            n smile_1 "You always remind things correctly, Bianca."
 
         label is_q_end:
             stop music fadeout 2.0
+            show screen quiz_results(plan_phase_1_score, 5)
             n "Well, we're done!"
             e surprised_1 "That was quick!"
+            if plan_phase_1_score == 5:
+                n smirk_1 "Five out of five. Smart people end up in old books, y'know."
+                n default_1 "Like the Goetia. Seventy-two names, and every name is a key."
+                b unimpressed_1 "Since when do you read, Newz?"
+                n smile_2 "Since never! Forget I said anything."
+            elif plan_phase_1_score <= 2:
+                b lookaway_1 "We'll need to pay more attention than this, [nome_protagonista]."
+            hide screen quiz_results
             b smile_1 "Very well, now we all recalled and shared the information we need."
             b default_1 "Now we should proceed onto the next phase, where I'll do my best to give you the intel you need."
             b smile_3 "So, let's start with the \"Plan Definition\" phase!"
             centered "{color=#000000}{size=80}{b}{cps=10}PHASE 3: PLAN DEFINITION{/cps}{/b}{/size}{/color}"
             play music audio.myst_indagini_allegra fadein 2.0
             b "Very well. First of all, we want to meet Lily. I'd say the best place is at school, after lessons."
-            b "We can talk about Daniele losing his memory nearby her, and see if we get her attention."
+            b "We can talk about [nome_protagonista] losing his memory nearby her, and see if we get her attention."
             b "Then, we can mention Lily, her case, and the fact that we're worried about her. We can say that we'd like to share information with her if we ever were able to meet her."
             m "Wait, I have a question. How can we recognise her?"
             n "She's a pretty lil' flower, her hair are violet, and her eyes are of a lively purple."
